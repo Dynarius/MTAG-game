@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Game Store Program</title>
+		
+	</head>
+
+		<body>
+
+			<br><br><br><br>
+			<center><button onClick="itemSelect()">Store</button>
+			<br><br><button onClick="showInventory()">Inventory</button>
+			<br><br><button onClick="displayCur()">Wallet</button>
+			
+		<p id="currency"></p>
+		<style>
+			body{
+				background-image: url("https://snap.berkeley.edu/snapsource/Backgrounds/clothing_store.jpg");
+				background-size: 1366px 768px;
+			}
+			p{
+				color: white;
+			}
+			</style>
+
+	<script type="text/javascript">
+
+// COMMENTS SECTION
+
+/* 
+NOTE:  Mr. Rick has used comments to indicate where different sections of code could go to help you keep organized.  This also simulates what some programming languages require, so it can help build good habits.
+*/
+
+
+/* 
+// Part a:  
+Programmers: Ian Sikes, Jeff DeLong, Darius Parker, Kimani Wells
+Date Last Modified: 11/12/2018
+Goal/Purpose: Create a simple game store program.
+Status: Finished
+
+
+
+// Part b: Add comments with details/explanations throughout the code as needed
+// If you had to do some 'good thinking' or get help to solve something, it deserves a comment!
+*/
+   
+// Variables section
+
+var displayStore = "";
+var displayInv = "";
+var pickItem;
+var currency = 500;
+var inventory = [];
+
+var items = [ // Items in the store.
+    "Shortsword", "Metal Shield", "Longbow"
+];
+
+var prices = [ // Prices of items parallel to items in the store.
+    250, 250, 500
+];
+
+// Functions section
+
+function displayStory () { // Opens the backstory when executing program.
+alert ("You are a weary knight coming from your village.");
+alert ("Bandits just raided the village and burned down everything and looted all the homes.");
+alert ("After walking on an abandoned trail for miles, you stumble upon a merchant’s shop in the middle of nowhere, and had only the 500 gold you had left in your pocket.");
+alert ("You need a weapon to fight back those bandits and save the people in the village.");
+alert ("What do you choose?");
+}
+
+function displayCur(){ // Shows the players money when opening wallet.
+	alert("Money: " + currency + " Gold");
+	}
+
+function showInventory(){ // Shows the characters inventory when pressing inventory button.
+	displayInv = "";
+	
+	for (i = 0; i < inventory.length; i++){// 
+		displayInv += inventory[i] + "\n";
+	}
+	
+	alert(displayInv);
+}
+
+function itemSelect(){ // Function for the store itself.
+	
+	displayStore = "";
+	
+	for(i = 0; i < items.length; i++){
+	    displayStore += (i + 1) + ". " + items[i] + "\n";
+	    }
+	    
+        pickItem = (prompt(displayStore)-1);
+		
+	if(currency >= prices[pickItem] && confirm(items[pickItem] + "\nPrice: " + prices[pickItem] + " Gold") == true){// Confirms the purchase.
+	    currency -= prices[pickItem];  
+        
+        inventory.push(items[pickItem]);
+		
+        alert("Thank you for purchasing this!");
+		 
+			if(confirm("Return to store?") == true){
+			    itemSelect();
+			}else {
+			    alert("Come back soon!");
+			}
+	
+	}else if(currency <= prices[pickItem] && confirm(items[pickItem] + "\nPrice: " + prices[pickItem] + " Gold") == true){
+		alert("You do not have enough gold.");
+		itemSelect();
+	}else {
+		alert("Come back soon!");
+	}
+	
+}
+
+// MAIN program execution
+displayStory();
+
+	</script>
+	</body>
+</html>
