@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Game Store Program</title>
+
+</head>
+
+<h1></h1>
+
+<body>
+
+	<button onClick="itemSelect()">Store</button>
+	<button onClick="sellItem()">Sell Items</button>
+	<button onClick="showInventory()">Inventory</button>
+	<button onClick="displayCur()">Wallet</button>
+	<br><button onClick="fight1()">Walk home</button></br>
+
+
+
+	<p id="currency"></p>
+	<p id="classes()"></p>
+	<p id="drops()"></p>
+	<style>
+		body{
+				background-image: url("https://vignette.wikia.nocookie.net/simpsons/images/d/da/800px-Kwik-E-Mart.png/revision/latest?cb=20170101230443");
+				background-size: 1366px 768px;
+			}
+			p{
+				color: white;
+			}
+			</style>
+
+	<script type="text/javascript">
+		// COMMENTS SECTION
+		/* 
+		NOTE:  Mr. Rick has used comments to indicate where different sections of code could go to help you keep organized.  This also simulates what some programming languages require, so it can help build good habits.
+		*/
+		/* 
+		// Part a:  
+		Programmers: Ian Sikes, Jeff DeLong, Darius Parker, Kimani Wells
+		Date Last Modified: 11/12/2018
+		Goal/Purpose: Create a simple game store program.
+		Status: Finished
+		// Part b: Add comments with details/explanations throughout the code as needed
+		// If you had to do some 'good thinking' or get help to solve something, it deserves a comment!
+		*/
+
+		// Variables section
+		var health = 100;
+		var person = prompt("Enter yah name here foo", "");
+		var displayStore = "";
+		var displayInv = "";
+		var pickItem;
+		var currency = 30;
+		var inventory = ["Dem Handz"];
+		var items = [ // Items in the store.
+			"TWO NUMBA NINES", "Kimanis brades", "Jaivens Durag", "Hot Cheetoes", "Kool-Aid", "Lean", "Senzu Bean", "Katana", "Ace Boon Coon", "Ray Gun"
+		];
+		var prices = [ // Prices of items parallel to items in the store.
+			9, 2, 25, 18, 5, 10, 1000, 20, 1000, 1001
+		];
+
+		// Classes
+		var sneaking;
+		var boxing;
+		var shooting;
+		var weaving
+		// Functions section
+
+		//classes -------------------------------------------------------------------------------------------------
+		function classes() {
+
+
+		}
+		//Story ---------------------------------------------------------------------------------------------------
+		function displayStory() { // Opens the backstory when executing program.
+			alert(person + " live in da ghetto");
+			alert(person + " walks back to his house but suddenly remebers 'I forgot supplies'");
+			alert("So " + person + " c walk into the nearest kwik e  mart");
+			alert("Cashier says: WHATCHU WANT FOO");
+		}
+		//Selling ---------------------------------------------------------------------------------------------------
+		function sellItem() {
+			displayInv = "";
+
+			for (i = 0; i < inventory.length; i++) {// 
+				displayInv += inventory[i] + "\n";
+			}
+
+			alert(displayInv);
+
+		}
+
+		//Wallet ---------------------------------------------------------------------------------------------------
+		function displayCur() { // Shows the players money when opening wallet.
+			alert("" + currency + " Struggle Bucks");
+		}
+
+		//Inventory ---------------------------------------------------------------------------------------------------
+		function showInventory() { // Shows the characters inventory when pressing inventory button.
+			displayInv = "";
+
+			for (i = 0; i < inventory.length; i++) {// 
+				displayInv += inventory[i] + "\n";
+			}
+
+			alert(displayInv);
+		}
+		//Item select function-------------------------------------------------------------------------------------------
+		function itemSelect() { // Function for the store itself.
+
+			displayStore = "";
+
+			for (i = 0; i < items.length; i++) {
+				displayStore += (i + 1) + ". " + items[i] + "\n";
+			}
+
+			pickItem = (prompt(displayStore) - 1);
+
+			if (currency >= prices[pickItem] && confirm(items[pickItem] + "\nPrice: " + prices[pickItem] + " Struggle Bucks") == true) {// Confirms the purchase.
+				currency -= prices[pickItem];
+
+				inventory.push(items[pickItem]);
+
+				alert("NOW GET OUT");
+
+				if (confirm("Return to store?") == true) {
+					itemSelect();
+				} else {
+					alert("DONT COME BACK");
+				}
+
+			} else if (currency <= prices[pickItem] && confirm(items[pickItem] + "\nPrice: " + prices[pickItem] + " Struggle Bucks") == true) {
+				alert("WHERE YAH MONEY");
+				itemSelect();
+			} else {
+				alert("DONT COME BACK FOO");
+			}
+
+		}
+		// First function
+		function fight1() {
+			alert(person + " " + "Starts to walk home");
+			alert("Suddenly a crackhead comes up to you trying to run them hands!");
+			alert("What do you do?");
+
+			var choice = prompt("run Or fight?", "Watcha choose");
+			if (choice.toLowerCase() == "fight" || choice.toLowerCase() == "f") {
+
+				var randomNumber = Math.floor(Math.random() * 2);
+				if (!hasItem("Dem Handz") && randomNumber == 1) {
+					alert("That crackhead folded you");
+				} else {
+					alert("You folded that crackhead");
+
+					var randomNumber = Math.floor(Math.random() * 2);
+					if (randomNumber == 1) {
+						alert("The crackhead wont let you leave, HES TO FAST!");
+					}
+				}
+			}
+
+
+
+		}
+		// MAIN program execution
+		displayStory();
+
+	</script>
+</body>
+
+</html>
