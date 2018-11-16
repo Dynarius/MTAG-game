@@ -4,7 +4,7 @@
 <head>
 	<title>Game Store Program</title>
 	<style>
-	.button {
+		.button {
 		background-color: rgb(0, 17, 255);
 		border: none;
 		color: white;
@@ -79,7 +79,7 @@
 	<div class="button4" onclick="displayCur()">Wallet</div>
 	<div class="button5" onclick="fight1()">Walk Home</div>
 
-	
+
 
 
 	<p id="currency"></p>
@@ -97,66 +97,58 @@
 
 	<script type="text/javascript">
 		// COMMENTS SECTION
-		/* 
-		NOTE:  Mr. Rick has used comments to indicate where different sections of code could go to help you keep organized.  This also simulates what some programming languages require, so it can help build good habits.
-		*/
-		/* 
-		// Part a:  
-		Programmers: Ian Sikes, Jeff DeLong, Darius Parker, Kimani Wells
-		Date Last Modified: 11/12/2018
-		Goal/Purpose: Create a simple game store program.
-		Status: Finished
-		// Part b: Add comments with details/explanations throughout the code as needed
-		// If you had to do some 'good thinking' or get help to solve something, it deserves a comment!
-		*/
 
 		// Variables section
 		var health = 100;
 		var person = prompt("Enter yah name here foo", "");
+		var classes = ["Shooting", "Folding", "Weaving"];
+		var chooseC = prompt("Choose Yah class: \n" + classes, "Make sure you add the capital");
 		var displayStore = "";
 		var displayInv = "";
 		var pickItem;
 		var currency = 30;
-		var inventory = [];
+		var inventory = ["Dem Handz"];
 		var items = [ // Items in the store.
-			"Dem Handz", "TWO NUMBA NINES", "Kimanis brades", "Jaivens Durag", "Hot Cheetoes", "Kool-Aid", "Lean", "Senzu Bean", "Katana", "Ace Boon Coon", "Ray Gun"
+			"TWO NUMBA NINES", "Kimanis brades", "Jaivens Durag", "Hot Cheetoes", "Kool-Aid", "Lean", "Senzu Bean", "Katana", "Ace Boon Coon", "Ray Gun"
 		];
 		var prices = [ // Prices of items parallel to items in the store.
-			0, 9, 2, 25, 18, 5, 10, 1000, 20, 1000, 1001
+			9, 2, 25, 18, 5, 10, 1000, 20, 1000, 1001
 		];
 
 		// Classes
 		var sneaking;
 		var boxing;
 		var shooting;
-		var weaving
+		var weaving;
 		// Functions section
-
 		//classes -------------------------------------------------------------------------------------------------
-		function classes() {
+		function classesFun() {
 
 
 		}
 		//Story ---------------------------------------------------------------------------------------------------
 		function displayStory() { // Opens the backstory when executing program.
-			alert(person + " live in da ghetto");
+			alert(person + " lives in da ghetto");
 			alert(person + " walks back to his house but suddenly remebers 'I forgot supplies'");
 			alert("so " + person + " c walk into the nearest kwik e  mart");
 			alert("Cashier says: WHATCHU WANT FOO");
 		}
 		//Selling ---------------------------------------------------------------------------------------------------
 		function sellItem() {
-			
-			displayInv= "";
+			displayInv = "";
 
 			for (i = 0; i < inventory.length; i++) {
 				displayInv += (i + 1) + ". " + inventory[i] + "\n";
 			}
 
-			pickItem = (prompt(displayInv) - 1);
-				items.push(inventory[pickItem]);
+			pickItem = prompt(displayInv) - 1;
 
-			
+			inventoryItem = inventory.indexOf(inventory[pickItem]);
+			itemPrice = prices[inventory.indexOf(inventory[pickItem]) - 1];
+			currency += itemPrice;
+			console.log(itemPrice);
+
+			inventory.splice(inventoryItem, 1);
 		}
 		//Wallet ---------------------------------------------------------------------------------------------------
 		function displayCur() { // Shows the players money when opening wallet.
@@ -204,6 +196,14 @@
 				alert("DONT COME BACK FOO");
 			}
 
+
+			function hasItem(ItemName) {
+				for (var i = 0; i < inventory.length; i++) {
+					if (inventory[i] == ItemName) {
+						return true;
+					}
+				}
+			}
 		}
 		// First function
 		function fight1() {
@@ -230,11 +230,10 @@
 
 
 		}
-		
-		document.getElementById("itemSelect()").addEventListener("click", function(){
-			itemSelect()
-});
 
+		document.getElementById("itemSelect()").addEventListener("click", function () {
+			itemSelect()
+		});
 		// MAIN program execution
 		displayStory();
 	</script>
