@@ -141,12 +141,14 @@
 
 			pickItem = prompt(displayInv) - 1;
 
-			inventoryItem = inventory.indexOf(inventory[pickItem]);
+			inventoryItem = items.indexOf(inventory[pickItem]);
 			itemPrice = prices[inventory.indexOf(inventory[pickItem]) - 1];
-			currency += itemPrice;
-			console.log(itemPrice);
+			if(itemPrice){
+				currency += itemPrice;
+				console.log(itemPrice);
+				inventory.splice(inventoryItem, 1);
+			}
 
-			inventory.splice(inventoryItem, 1);
 		}
 		//Wallet ---------------------------------------------------------------------------------------------------
 		function displayCur() { // Shows the players money when opening wallet.
@@ -203,6 +205,7 @@
 				}
 			}
 		}
+		
 		// First function
 		function fight1() {
 			alert(person + " " + "Starts to walk home");
