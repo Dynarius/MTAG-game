@@ -100,26 +100,22 @@
 		// Variables section
 		var health = 100;
 		var person = prompt("Enter yah name here foo", "");
-		var classes = ["Shooting", "Folding", "Weaving"];
-		var chooseC = prompt("Choose Yah class: \n" + classes, "Make sure you add the capital");
 		var displayStore = "";
 		var displayInv = "";
 		var pickItem;
 		var currency = 30;
 		var inventory = [];
 		var items = [ // Items in the store.
-			"TWO NUMBA NINES", "Kimanis brades", "Jaivens Durag", "Hot Cheetoes", "Kool-Aid", "Lean", "Senzu Bean", "Katana", "Ace Boon Coon", "Ray Gun"
+			"Dem Handz", "Razor", "Glock 17", "Da Gat", "Timbs", "Katana", "Frying Pan", "Stan Lee", "Ace Boon Coon", "Ray Gun"
 		];
 		var prices = [ // Prices of items parallel to items in the store.
-			9, 2, 25, 18, 5, 10, 1000, 20, 1000, 1001
+			0, 2, 20, 25, 20, 40, 50, 1000, 1000, 1000
 		];
 
-		// Classes
-		var folding;
-		var shooting;
-		var weaving;
+		// Mobs
+		var crackhead = "Crackhead"
+		var kimani = "Krazy Legs Kimani"
 		// Functions section
-		//classes -------------------------------------------------------------------------------------------------
 		function classesFun() {
 
 
@@ -144,7 +140,7 @@
 			inventoryItem = items.indexOf(inventory[pickItem]);
 			itemPrice = prices[items.indexOf(inventory[pickItem])];
 			console.log(itemPrice);
-			if(itemPrice){
+			if (itemPrice) {
 				currency += itemPrice;
 				inventory.splice(pickItem, 1);
 			}
@@ -203,35 +199,27 @@
 						return true;
 					}
 				}
+				return false;
 			}
+
 		}
-		
-		// First function
+
+		// Fight function
 		function fight1() {
-			alert(person + " " + "Starts to walk home");
-			alert("Suddenly a crackhead comes up to you trying to run them hands!");
-			alert("What do you do?");
-
-			var choice = prompt("run Or fight?", "Watcha choose");
-			if (choice.toLowerCase() == "fight" || choice.toLowerCase() == "f") {
-
-				var randomNumber = Math.floor(Math.random() * 2);
-				if (!hasItem("Dem Handz") && randomNumber == 1) {
-					alert("That crackhead folded you");
-				} else {
-					alert("You folded that crackhead");
-
+			var randomNumber = Math.floor(Math.random() * 2);
+			if (randomNumber == 1) {
+				alert ("a wild crackhead has ran up on you!");
+				var choice = prompt("fight or run?", "Choose here");
+				if (choice.toLowerCase() == "fight" || choice.toLowerCase() == "f") {
 					var randomNumber = Math.floor(Math.random() * 2);
-					if (randomNumber == 1) {
-						alert("The crackhead wont let you leave, HES TO FAST!");
+					if (!hasItem("Dem Handz")) {
+						alert("The Crackhead folded " + person);
+					} else {
+						alert(person + " folded the crackhead!");
 					}
 				}
 			}
-
-
-
 		}
-
 		document.getElementById("itemSelect()").addEventListener("click", function () {
 			itemSelect();
 		});
