@@ -87,7 +87,7 @@
 
 		body{
 				background-image: url("https://vignette.wikia.nocookie.net/simpsons/images/d/da/800px-Kwik-E-Mart.png/revision/latest?cb=20170101230443");
-				background-size: 1366px 768px;
+				background-size: 100%;
 			}
 			p{
 				color: white;
@@ -142,11 +142,11 @@
 			pickItem = prompt(displayInv) - 1;
 
 			inventoryItem = items.indexOf(inventory[pickItem]);
-			itemPrice = prices[inventory.indexOf(inventory[pickItem]) - 1];
+			itemPrice = prices[items.indexOf(inventory[pickItem])];
+			console.log(itemPrice);
 			if(itemPrice){
 				currency += itemPrice;
-				console.log(itemPrice);
-				inventory.splice(inventoryItem, 1);
+				inventory.splice(pickItem, 1);
 			}
 
 		}
