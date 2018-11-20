@@ -90,7 +90,8 @@
 	<div class="button3" onclick="showInventory()">Inventory</div>
 	<div class="button4" onclick="displayCur()">Wallet</div>
 	<div class="button5" onclick="walkHome()">Walk Home</div>
-	<br><div class="button6" onclick="Fight1()">Kimani Fight</div></br>
+	<br>
+	<div class="button6" onclick="Fight1()">Kimani Fight</div></br>
 	<p id="currency"></p>
 	<p id="classes()"></p>
 	<p id="drops()"></p>
@@ -136,7 +137,7 @@
 		function displayStory() { // Opens the backstory when executing program.
 			alert(person + " lives in da ghetto");
 			alert(person + " walks back to his house but suddenly remebers 'I forgot supplies'");
-			alert("so " + person + " c walk into the nearest kwik e  mart");
+			alert("so " + person + " c walks into the nearest kwik e  mart");
 			alert("Cashier says: WHATCHU WANT FOO");
 		}
 		//Selling ---------------------------------------------------------------------------------------------------
@@ -222,16 +223,13 @@
 		function walkHome() {
 			alert("A crack head has run up on you!");
 			var choice = prompt("fold or run", "Type Choice Here");
-			if (!hasItem("Ratpuppet")) {
-				if (choice == "Fold" || choice == "fold" || choice == "f") {
-					alert("You folded the crackhead");
-					alert("The crackhead had some struggle bucks!");
 
-					var randomChance = Math.floor(Math.random() * 4);
-					currency += randomChance;
-				}
+			if (choice == "Fold" || choice == "fold" || choice == "f") {
+				alert("You folded the crackhead");
+				alert("The crackhead had some struggle bucks!");
 
-
+				var randomChance = Math.floor(Math.random() * 4);
+				currency += randomChance;
 			} else {
 				if (choice == "Run" || choice == "run" || choice == "r") {
 					alert("The Crackhead had crackhead speed!");
@@ -242,9 +240,8 @@
 			}
 		}
 
-		// MAIN program execution
-		displayStory();
-		hasItem();
+				// MAIN program execution
+				displayStory();
 	</script>
 </body>
 
