@@ -64,6 +64,18 @@
 		margin: 4px 2px;
 		cursor: pointer;
 	}
+	.button6 {
+		background-color: rgb(247, 0, 255);
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+	}
 </style>
 
 </head>
@@ -77,8 +89,8 @@
 	<div class="button2" onclick="sellItem()">Sell Items</div>
 	<div class="button3" onclick="showInventory()">Inventory</div>
 	<div class="button4" onclick="displayCur()">Wallet</div>
-	<div class="button5" onclick="fight1()">Walk Home</div>
-
+	<div class="button5" onclick="walkHome()">Walk Home</div>
+	<br><div class="button6" onclick="Fight1()">Kimani Fight</div></br>
 	<p id="currency"></p>
 	<p id="classes()"></p>
 	<p id="drops()"></p>
@@ -207,26 +219,29 @@
 
 
 		// Fight function
-		function fight1(){
-            var choice = prompt("Enter or Don't Enter", "Type Choice Here");
-            if (choice == "Enter" || choice == "enter" || choice == "e") {
-                alert("You walk into the cave and as you enter a chamber you see the nightmares of most... Rex Fury!");
-                alert("Look another puny human my rats should have dealt with you guess I have to do it myself!");
+		function walkHome() {
+			alert("A crack head has run up on you!");
+			var choice = prompt("fold or run", "Type Choice Here");
+			if (!hasItem("Ratpuppet")) {
+				if (choice == "Fold" || choice == "fold" || choice == "f") {
+					alert("You folded the crackhead");
+					alert("The crackhead had some struggle bucks!");
 
-                var randomChance = Math.floor(Math.random() * 2);
-                if (!hasItem("Razor") && randomChance == 1) {
-                    alert("You fought hard and long but in the end you died!");
-                } else {
-                    alert("You seem to be losing the fight but you think about you wife and kids back home and how they will make you a cake if you live with pure anger that your enemy is trying to stop you from eating cake you kill them all in seconds.");
-                }
+					var randomChance = Math.floor(Math.random() * 4);
+					currency += randomChance;
+				}
 
-            } else {
-                alert("You are scared to enter but out of nowhere a rat starts running at you in shock you fall into the cave!");
-                alert("You walk further the cave and as you enter a chamber you see the nightmares of most... Rex Fury!");
-                alert("Look another puny human, my rats should have dealt with you guess I have to do it myself!");
-            }
+
+			} else {
+				if (choice == "Run" || choice == "run" || choice == "r") {
+					alert("The Crackhead had crackhead speed!");
+					alert("The crackhead folded you and took some of yah struggle bucks!");
+					currency -= randomChance;
+
+				}
+			}
 		}
-		
+
 		// MAIN program execution
 		displayStory();
 		hasItem();
