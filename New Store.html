@@ -73,7 +73,7 @@
 <body>
 
 
-	<div class="button" id="itemSelect()">Store</div>
+	<div class="button" onclick="itemSelect()">Store</div>
 	<div class="button2" onclick="sellItem()">Sell Items</div>
 	<div class="button3" onclick="showInventory()">Inventory</div>
 	<div class="button4" onclick="displayCur()">Wallet</div>
@@ -199,32 +199,37 @@
 						return true;
 					}
 				}
+
 				return false;
 			}
 
 		}
 
+
 		// Fight function
-		function fight1() {
-			var randomNumber = Math.floor(Math.random() * 2);
-			if (randomNumber == 1) {
-				alert ("a wild crackhead has ran up on you!");
-				var choice = prompt("fight or run?", "Choose here");
-				if (choice.toLowerCase() == "fight" || choice.toLowerCase() == "f") {
-					var randomNumber = Math.floor(Math.random() * 2);
-					if (!hasItem("Dem Handz")) {
-						alert("The Crackhead folded " + person);
-					} else {
-						alert(person + " folded the crackhead!");
-					}
-				}
-			}
+		function fight1(){
+            var choice = prompt("Enter or Don't Enter", "Type Choice Here");
+            if (choice == "Enter" || choice == "enter" || choice == "e") {
+                alert("You walk into the cave and as you enter a chamber you see the nightmares of most... Rex Fury!");
+                alert("Look another puny human my rats should have dealt with you guess I have to do it myself!");
+
+                var randomChance = Math.floor(Math.random() * 2);
+                if (!hasItem("Razor") && randomChance == 1) {
+                    alert("You fought hard and long but in the end you died!");
+                } else {
+                    alert("You seem to be losing the fight but you think about you wife and kids back home and how they will make you a cake if you live with pure anger that your enemy is trying to stop you from eating cake you kill them all in seconds.");
+                }
+
+            } else {
+                alert("You are scared to enter but out of nowhere a rat starts running at you in shock you fall into the cave!");
+                alert("You walk further the cave and as you enter a chamber you see the nightmares of most... Rex Fury!");
+                alert("Look another puny human, my rats should have dealt with you guess I have to do it myself!");
+            }
 		}
-		document.getElementById("itemSelect()").addEventListener("click", function () {
-			itemSelect();
-		});
+		
 		// MAIN program execution
 		displayStory();
+		hasItem();
 	</script>
 </body>
 
