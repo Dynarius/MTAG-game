@@ -199,21 +199,20 @@
 		function walkHome() {
 			alert("A crack head has run up on you!");
 			var choice = prompt("fold or run", "Type Choice Here");
-
+			var randomChance = Math.floor(Math.random() * 4 + 1);
 			if (choice == "Fold" || choice == "fold" || choice == "f") {
 				alert("You folded the crackhead");
 				alert("The crackhead had some struggle bucks!");
-
-				var randomChance = Math.floor(Math.random() * 4);
 				currency += randomChance;
 			} else {
+
 				if (choice == "Run" || choice == "run" || choice == "r") {
 					alert("The Crackhead had crackhead speed!");
 					alert("The crackhead folded you and took some of yah struggle bucks!");
-					currency - randomChance;
+					currency -= randomChance;
 
 				}
-			}
+				}
 		}
 
 				// MAIN program execution
